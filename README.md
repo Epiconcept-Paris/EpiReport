@@ -1,6 +1,7 @@
 # '_EpiReport_' package
 European Centre for Disease Prevention and Control (ECDC)
 
+
 # Description
 
 The EpiReport package allows the user to draft an epidemiological report similar to the __ECDC Annual Epidemiological 
