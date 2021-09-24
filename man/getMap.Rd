@@ -51,7 +51,7 @@ Three type of maps can be included in the report:
    An additional caption will be included at the location of the bookmark \code{'MAP_ASR_CAPTION'}.}
 }
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/annual-epidemiological-reports})
+\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
 }
 \examples{
 # --- Preview of the PNG map using the default Dengue dataset
