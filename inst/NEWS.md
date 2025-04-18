@@ -1,3 +1,13 @@
+EpiReport 1.0.2 (2021-02-04)
+==================
+
+### BUG FIXES
+
+* CRAN adjustments required
+  + In DESCRIPTION, 'rmarkdown' package added to 'suggests' section
+  + Correction of AER ECDC reports URL in documentation
+  
+  
 EpiReport 1.0.1 (2021-02-04)
 ==================
 

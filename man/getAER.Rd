@@ -5,8 +5,7 @@
 \title{Get full disease-specific epidemiological report}
 \usage{
 getAER(
-  template = file.path(system.file(package = "EpiReport"),
-    "template/AER_template.docx"),
+  template = file.path(system.file(package = "EpiReport"), "template/AER_template.docx"),
   outputPath = getwd(),
   x = EpiReport::DENGUE2019,
   disease = "DENGUE",
