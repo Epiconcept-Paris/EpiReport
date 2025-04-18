@@ -43,7 +43,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Install dependencies
+      - name: Disable pak (debug fallback)
+        run: echo "USE_PAK=false" >> $GITHUB_ENV
+
+      - name: Install dependencies (no pak fallback)
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: devtools
