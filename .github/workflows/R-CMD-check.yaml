@@ -36,6 +36,9 @@ jobs:
           r-version: ${{ matrix.config.r }}
           cran: auto
 
+      - name: Disable pak (fallback to install.packages)
+        run: echo "USE_PAK=false" >> $GITHUB_ENV
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
