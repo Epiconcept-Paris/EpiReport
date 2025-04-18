@@ -56,9 +56,9 @@ The current version of the \code{'EpiReport'} package includes three types of ta
 (see detailed specification of the tables in the
 package vignette with \code{browseVignettes(package = "EpiReport")}):
 \itemize{
-   \item{\code{COUNT} - }{Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
-   \item{\code{RATE} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
-   \item{\code{ASR} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
+   \item{\code{COUNT} - Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
+   \item{\code{RATE} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
+   \item{\code{ASR} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
    including age-standardised rates for the most recent year.}
 }
 }
@@ -69,7 +69,7 @@ getTableByMS()
 }
 \seealso{
 Global function for the full epidemiological report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{flextable}} \code{\link{officer}} \cr
+Required Packages: \code{\link[=flextable-package]{flextable}} \code{\link[=officer-package]{officer}} \cr
 Internal functions: \code{\link{shapeECDCFlexTable}} \code{\link{cleanECDCTable}} \cr
 Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 }

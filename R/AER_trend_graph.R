@@ -7,8 +7,8 @@
 #' The graph includes the number of cases at EU/EEA level, by month,
 #' over the past five years, with:
 #' \itemize{
-#'    \item{}{The number of cases by month over the 5-year period (grey solid line)}
-#'    \item{}{The 12-month moving average of the number of cases by month (green solid line)}
+#'    \item{The number of cases by month over the 5-year period (grey solid line)}
+#'    \item{The 12-month moving average of the number of cases by month (green solid line)}
 #' }
 #' (see ECDC reports
 #' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
@@ -36,7 +36,7 @@
 #' @return 'Word' doc or a ggplot2 preview
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
 #' Internal functions: \code{\link{plotTS12MAvg}} \cr
 #' Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 #'
@@ -59,9 +59,9 @@ getTrend <- function(x = EpiReport::DENGUE2019,
                      index = 1,
                      doc){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(x)) { x <- EpiReport::DENGUE2019 }
   if(missing(disease)) { disease <- "DENGUE" }
@@ -71,29 +71,29 @@ getTrend <- function(x = EpiReport::DENGUE2019,
   if(missing(index)) { index <- 1 }
 
 
-  ## ----
+  ## ---
   ## Preparing the data
-  ## ----
+  ## ---
 
   x$MeasureCode <- cleanMeasureCode(x$MeasureCode)
 
 
-  ## ----
+  ## ---
   ## Filtering parameter table
-  ## ----
+  ## ---
 
   reportParameters <- filterDisease(disease, reportParameters)
 
 
-  ## ----
+  ## ---
   ## Trend plot
-  ## ----
+  ## ---
 
   if(reportParameters$TSTrendGraphUse == "Y") {
 
-    ## ----
+    ## ---
     ## Filtering data
-    ## ----
+    ## ---
 
     # --- Filtering on the required variables
     x <- dplyr::select(x, c("HealthTopicCode", "MeasureCode", "TimeUnit",
@@ -149,9 +149,9 @@ getTrend <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ----
+    ## ---
     ## Building the time series for all countries with no gap
-    ## ----
+    ## ---
 
     tsFill <- expand.grid(TimeCode = studyPeriod, GeoCode = MS, stringsAsFactors = FALSE)
 
@@ -180,9 +180,9 @@ getTrend <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ----
+    ## ---
     ## Plot
-    ## ----
+    ## ---
 
     p <- plotTS12MAvg(eueea,
                       xvar = "TimeCode",
@@ -194,7 +194,7 @@ getTrend <- function(x = EpiReport::DENGUE2019,
       return(p)
     } else {
 
-      ## ------ Caption
+      ## --- Caption
       pop <- ifelse(reportParameters$MeasurePopulation == "ALL", "", "-")
       pop <- ifelse(reportParameters$MeasurePopulation == "CONFIRMED", "confirmed ", pop)
       caption <- paste("Figure ", index, ". Distribution of ", pop,
@@ -204,14 +204,14 @@ getTrend <- function(x = EpiReport::DENGUE2019,
                                                bookmark = "TS_TREND_CAPTION",
                                                value = caption)
 
-      ## ------ Plot
+      ## --- Plot
       doc <- EpiReport::body_replace_gg_at_bkm(doc = doc,
                                                gg = p,
                                                bookmark = "TS_TREND",
                                                width = 6,
                                                height = 3)
 
-      ## ------ List of countries reporting consistently
+      ## --- List of countries reporting consistently
       countries <- EpiReport::MSCode$TheCountry[EpiReport::MSCode$GeoCode %in% x$GeoCode]
       countries <- paste(countries, collapse = ", ")
       countries <- paste("Source: Country reports from ", countries, ".", sep = "")
@@ -223,9 +223,9 @@ getTrend <- function(x = EpiReport::DENGUE2019,
   }
 
 
-  ## ----
+  ## ---
   ## No trend plot for this disease
-  ## ----
+  ## ---
 
   if(reportParameters$TSTrendGraphUse == "N") {
     message(paste('According to the parameter table \'AERparams\', this disease "',
@@ -238,9 +238,9 @@ getTrend <- function(x = EpiReport::DENGUE2019,
   }
 
 
-  ## ----
+  ## ---
   ## Final output
-  ## ----
+  ## ---
 
   if(missing(doc)) {
     return(p)
@@ -259,8 +259,8 @@ getTrend <- function(x = EpiReport::DENGUE2019,
 #' The graph includes the trend and number of cases at EU/EEA level, by month,
 #' over the past five years, with:
 #' \itemize{
-#'    \item{\code{yvar}: }{The number of cases by month over the 5-year period (grey solid line)}
-#'    \item{\code{movAverage}: }{The 12-month moving average of the number of cases by month (green solid line)}
+#'    \item{\code{yvar}: The number of cases by month over the 5-year period (grey solid line)}
+#'    \item{\code{movAverage}: The 12-month moving average of the number of cases by month (green solid line)}
 #' }
 #' Expects aggregated data and pre-calculated 12-month moving average.
 #'
@@ -275,7 +275,7 @@ getTrend <- function(x = EpiReport::DENGUE2019,
 #' @keywords trend
 #'
 #' @seealso Global function: \code{\link{getTrend}}  \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 #'
 #' @examples
 #'

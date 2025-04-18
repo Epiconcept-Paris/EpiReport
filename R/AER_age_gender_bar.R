@@ -5,10 +5,10 @@
 #' of the template report. \cr
 #' The bar graph presents the distribution of cases at EU/EEA level using either:
 #' \itemize{
-#'    \item{\code{AG-COUNT}: }{The number of cases by age and gender}
-#'    \item{\code{AG-RATE}: }{The rate per 100 000 cases by age and gender}
-#'    \item{\code{AG-PROP}: }{The proportion of cases by age and gender}
-#'    \item{\code{A-RATE}: }{The rate per 100 000 cases by age only}
+#'    \item{\code{AG-COUNT}: The number of cases by age and gender}
+#'    \item{\code{AG-RATE}: The rate per 100 000 cases by age and gender}
+#'    \item{\code{AG-PROP}: The proportion of cases by age and gender}
+#'    \item{\code{A-RATE}: The rate per 100 000 cases by age only}
 #' }
 #' The choice of the type of bar graph is set in the report parameters table \code{AERparams}. \cr
 #' (see ECDC reports
@@ -36,7 +36,7 @@
 #' @return 'Word' doc or a ggplot2 object
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
 #' Internal functions: \code{\link{plotBarGrouped}} (use of \code{plotAgeGender} discouraged)
 #' \code{\link{plotBar}} (use of \code{plotAge} discouraged)
 #' \code{\link{EcdcColors}} \cr
@@ -61,9 +61,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
                          index = 1,
                          doc){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(x)) { x <- EpiReport::DENGUE2019 }
   if(missing(disease)) { disease <- "DENGUE" }
@@ -73,30 +73,30 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
   if(missing(index)) { index <- 1 }
 
 
-  ## ----
+  ## ---
   ## Preparing the data
-  ## ----
+  ## ---
 
   x$MeasureCode <- cleanMeasureCode(x$MeasureCode)
 
 
-  ## ----
+  ## ---
   ## Filtering parameter table
-  ## ----
+  ## ---
 
   reportParameters <- filterDisease(disease, reportParameters)
 
 
-  ## ----
+  ## ---
   ## Age Gender bar graph
-  ## ----
+  ## ---
 
   if(reportParameters$AgeGenderUse != "NO") {
 
 
-    ## ----
+    ## ---
     ## Filtering data
-    ## ----
+    ## ---
 
     # --- Filtering on the required variables
     x <- dplyr::select(x, c("HealthTopicCode", "MeasureCode", "TimeUnit",
@@ -136,9 +136,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ------------
+    ## ---
     ## Age and Gender bar graph using rates: AG-RATE
-    ## ------------
+    ## ---
 
     if(reportParameters$AgeGenderUse == "AG-RATE") {
 
@@ -154,9 +154,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ------------
+    ## ---
     ## Age and Gender bar graph using counts: AG-COUNT
-    ## ------------
+    ## ---
 
     if(reportParameters$AgeGenderUse == "AG-COUNT") {
 
@@ -172,9 +172,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ------------
+    ## ---
     ## Proportion Graph: AG-PROP
-    ## ------------
+    ## ---
 
     if(reportParameters$AgeGenderUse == "AG-PROP") {
 
@@ -191,9 +191,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
     }
 
 
-    ## ------------
+    ## ---
     ## Age Rate bar graph (WNV): A-RATE
-    ## ------------
+    ## ---
 
     if(reportParameters$AgeGenderUse == "A-RATE") {
 
@@ -209,9 +209,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
     }
 
 
-    ## ----
+    ## ---
     ## Ordering the labels for gender variable
-    ## ----
+    ## ---
 
     x$XLabel <- factor(x$XLabel, orderQuasinum(unique(x$XLabel)))
     # --- for Age by Gender
@@ -220,9 +220,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
     }
 
 
-    ## ----
+    ## ---
     ## Plot
-    ## ----
+    ## ---
 
     if(substr(reportParameters$AgeGenderUse, 1, 2) == "AG") {
       # --- Age by Gender
@@ -248,7 +248,7 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
       return(p)
     } else {
 
-      ## ------ Caption
+      ## --- Caption
       pop <- ifelse(reportParameters$MeasurePopulation == "ALL", "", "-")
       pop <- ifelse(reportParameters$MeasurePopulation == "CONFIRMED", "confirmed ", pop)
       groupby <- ifelse(substr(reportParameters$AgeGenderUse, 1, 2) == "AG",
@@ -262,7 +262,7 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
                                                bookmark = "BARGPH_AGEGENDER_CAPTION",
                                                value = caption)
 
-      ## ------ Plot
+      ## --- Plot
       doc <- EpiReport::body_replace_gg_at_bkm(doc = doc,
                                                gg = p,
                                                bookmark = "BARGPH_AGEGENDER",
@@ -274,9 +274,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
 
 
 
-  ## ----
+  ## ---
   ## No AgeGender bar graph for this disease
-  ## ----
+  ## ---
 
   if(reportParameters$AgeGenderUse == "N") {
     message(paste('According to the parameter table \'AERparams\', this disease "',
@@ -289,9 +289,9 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
   }
 
 
-  ## ----
+  ## ---
   ## Final output
-  ## ----
+  ## ---
 
   if(missing(doc)) {
     return(p)
@@ -334,7 +334,7 @@ getAgeGender <- function(x = EpiReport::DENGUE2019,
 #'
 #' @seealso Global function: \code{\link{getAgeGender}}  \cr
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -463,7 +463,7 @@ plotBarGrouped <- function(.data,
 #'
 #' @seealso Global function: \code{\link{getAgeGender}}  \cr
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 #'
 #' @examples
 #'

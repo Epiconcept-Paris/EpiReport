@@ -19,7 +19,7 @@
 #'
 #' @seealso
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -43,9 +43,9 @@ plotPie <- function(.data,
                                               n = nrow(.data))) {
 
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(fill_colors)) { fill_colors <- EcdcColors(col_scale = "qual",
                                                      n = nrow(.data)) }

@@ -39,10 +39,10 @@ This function draws a line graph describing the seasonality of the selected dise
 over the past 5 years. \cr
 The graph includes the distribution of cases, by month, over the past five years, with:
 \itemize{
-   \item{\code{yvar}: }{The number of cases by month in the reference year (green solid line)}
-   \item{\code{mean4years}: }{The mean number of cases by month in the four previous years (grey dashed line)}
-   \item{\code{min4years}: }{The minimum number of cases by month in the four previous years (grey area)}
-   \item{\code{max4years}: }{The maximum number of cases by month in the four previous years (grey area)}
+   \item{\code{yvar}: The number of cases by month in the reference year (green solid line)}
+   \item{\code{mean4years}: The mean number of cases by month in the four previous years (grey dashed line)}
+   \item{\code{min4years}: The minimum number of cases by month in the four previous years (grey area)}
+   \item{\code{max4years}: The maximum number of cases by month in the four previous years (grey area)}
 }
 Expects aggregated data and pre-calculated min, max and mean figures.
 }
@@ -76,6 +76,6 @@ getSeason()
 }
 \seealso{
 Global function: \code{\link{getSeason}}  \cr
-Required Packages: \code{\link{ggplot2}}
+Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 }
 \keyword{seasonality}

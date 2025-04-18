@@ -41,12 +41,12 @@ that will be included in the epidemiological report at the bookmark location
 of the template report, depending of the type of map.
 Three type of maps can be included in the report:
 \itemize{
-   \item{Bookmark \code{'MAP_NB'}: }{Distribution of cases by country.
+   \item{Bookmark \code{'MAP_NB'}: Distribution of cases by country.
    An additional caption will be included at the location of the bookmark \code{'MAP_NB_CAPTION'}.}
-   \item{Bookmark \code{'MAP_RATE'}: }{Distribution of cases
+   \item{Bookmark \code{'MAP_RATE'}: Distribution of cases
    per 100 000 population by country. An additional caption will be included
    at the location of the bookmark \code{'MAP_RATE_CAPTION'}.}
-   \item{Bookmark \code{'MAP_ASR'}: }{Distribution of cases using
+   \item{Bookmark \code{'MAP_ASR'}: Distribution of cases using
    age-strandardised rates per 100 000 population by country.
    An additional caption will be included at the location of the bookmark \code{'MAP_ASR_CAPTION'}.}
 }
@@ -64,7 +64,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{officer}} \cr
+Required Packages: \code{\link[=officer-package]{officer}} \cr
 Internal functions: \code{\link{includeMap}} \code{\link{previewMap}} \cr
 Default datasets: \code{\link{AERparams}}
 }

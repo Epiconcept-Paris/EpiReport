@@ -19,7 +19,7 @@
 #'
 #' @seealso
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -48,9 +48,9 @@ plotBarGroupedH <- function(.data,
                      log10_scale = FALSE) {
 
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(fill_color)) { fill_color <- EcdcColors(col_scale = "qual",
                                                      n = length(unique(.data[[group]]))) }
@@ -58,9 +58,9 @@ plotBarGroupedH <- function(.data,
 
 
 
-  ## ----
+  ## ---
   ## Setting breaks for Y axis
-  ## ----
+  ## ---
 
   if (log10_scale == TRUE) {
     MAX <- max(.data[[yvar]], na.rm = TRUE)

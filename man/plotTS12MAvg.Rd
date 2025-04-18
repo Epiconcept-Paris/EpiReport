@@ -24,8 +24,8 @@ over the past 5 years. \cr
 The graph includes the trend and number of cases at EU/EEA level, by month,
 over the past five years, with:
 \itemize{
-   \item{\code{yvar}: }{The number of cases by month over the 5-year period (grey solid line)}
-   \item{\code{movAverage}: }{The 12-month moving average of the number of cases by month (green solid line)}
+   \item{\code{yvar}: The number of cases by month over the 5-year period (grey solid line)}
+   \item{\code{movAverage}: The 12-month moving average of the number of cases by month (green solid line)}
 }
 Expects aggregated data and pre-calculated 12-month moving average.
 }
@@ -47,6 +47,6 @@ plotTS12MAvg(test,
 }
 \seealso{
 Global function: \code{\link{getTrend}}  \cr
-Required Packages: \code{\link{ggplot2}}
+Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
 }
 \keyword{trend}

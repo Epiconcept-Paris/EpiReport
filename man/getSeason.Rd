@@ -52,10 +52,10 @@ that will be included in the epidemiological report at the bookmark location
 The graph includes the distribution of cases at EU/EEA level, by month,
 over the past five years, with:
 \itemize{
-   \item{}{The number of cases by month in the reference year (green solid line)}
-   \item{}{The mean number of cases by month in the four previous years (grey dashed line)}
-   \item{}{The minimum number of cases by month in the four previous years (grey area)}
-   \item{}{The maximum number of cases by month in the four previous years (grey area)}
+   \item{The number of cases by month in the reference year (green solid line)}
+   \item{The mean number of cases by month in the four previous years (grey dashed line)}
+   \item{The minimum number of cases by month in the four previous years (grey area)}
+   \item{The maximum number of cases by month in the four previous years (grey area)}
 }
 (see ECDC reports
 \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
@@ -72,7 +72,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
 Internal functions: \code{\link{plotSeasonality}} \cr
 Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 }
