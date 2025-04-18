@@ -40,7 +40,6 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages("devtools")
-          devtools::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Run devtools::check()
