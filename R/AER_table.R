@@ -5,7 +5,7 @@
 #' of the template report. An additional caption will be included at the location
 #' of the bookmark \code{'TABLE1_CAPTION'}. \cr
 #' (see Table 1 of the ECDC annual reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' The current version of the \code{'EpiReport'} package includes three types of table
 #' (see detailed specification of the tables in the
@@ -40,7 +40,7 @@
 #' @return 'Word' doc or \code{flextable} object (see \code{'flextable'} package)
 #'
 #' @seealso Global function for the full epidemiological report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link[=flextable-package]{flextable}} \code{\link[=officer-package]{officer}} \cr
+#' Required Packages: \code{\link[flextable]{flextable}} \code{\link[officer]{cursor_bookmark}} \cr
 #' Internal functions: \code{\link{shapeECDCFlexTable}} \code{\link{cleanECDCTable}} \cr
 #' Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 #'
@@ -395,7 +395,7 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
 #' @return flextable object (see \code{flextable} package)
 #'
 #' @seealso Global function: \code{\link{getTableByMS}} \cr
-#' Required package \code{\link[=flextable-package]{flextable}}
+#' Required package: \code{\link[flextable]{flextable}}
 #'
 #' @export
 #'

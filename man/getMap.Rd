@@ -51,7 +51,7 @@ Three type of maps can be included in the report:
    An additional caption will be included at the location of the bookmark \code{'MAP_ASR_CAPTION'}.}
 }
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 # --- Preview of the PNG map using the default Dengue dataset
@@ -64,7 +64,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link[=officer-package]{officer}} \cr
+Required Packages: \code{\link[officer]{body_replace_img_at_bkm}} \cr
 Internal functions: \code{\link{includeMap}} \code{\link{previewMap}} \cr
 Default datasets: \code{\link{AERparams}}
 }

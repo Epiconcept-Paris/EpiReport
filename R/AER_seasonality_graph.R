@@ -13,7 +13,7 @@
 #'    \item{The maximum number of cases by month in the four previous years (grey area)}
 #' }
 #' (see ECDC reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param x dataframe, raw disease-specific dataset (see specification of the
 #' dataset in the package vignette with \code{browseVignettes(package = "EpiReport")})
@@ -38,7 +38,7 @@
 #' @return 'Word' doc or a ggplot2 object
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
+#' Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 #' Internal functions: \code{\link{plotSeasonality}} \cr
 #' Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 #'
@@ -299,7 +299,7 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 #' @keywords seasonality
 #'
 #' @seealso Global function: \code{\link{getSeason}}  \cr
-#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #' @examples
 #'
 #'

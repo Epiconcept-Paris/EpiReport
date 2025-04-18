@@ -24,7 +24,7 @@
 #'
 #' @seealso
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #'
 #' @examples
 #' # --- Create dummy data

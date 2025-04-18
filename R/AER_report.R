@@ -8,7 +8,7 @@
 #' (see the package vignette "The Epidemiological Report Package" with
 #' \code{browseVignettes("EpiReport")})  \cr
 #' (see ECDC annual epidemilogical reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param output_path character string, the full path where to create the 'Word' output.
 #' Defaut location will be the current working directory (default \code{getwd()})
@@ -66,7 +66,7 @@ getTemplate <- function(output_path){
 #' including all disease-specific outputs at each output-specific bookmarks exact location. \cr
 #' (for further information on the outputs and the corresponding bookmarks,
 #' please see the package vignette "The Epidemiological Report Package" with \code{browseVignettes("EpiReport")})\cr
-#' (see ECDC AER \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' (see ECDC AER \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param template doc (see \code{'officer'} package), the empty 'Word' document template in which
 #' to include the table and plots disease-specific outputs.

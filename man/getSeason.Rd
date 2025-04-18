@@ -58,7 +58,7 @@ over the past five years, with:
    \item{The maximum number of cases by month in the four previous years (grey area)}
 }
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 
@@ -72,7 +72,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
+Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 Internal functions: \code{\link{plotSeasonality}} \cr
 Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 }

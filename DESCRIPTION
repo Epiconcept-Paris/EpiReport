@@ -43,4 +43,4 @@ Suggests:
     knitr (>= 1.20), 
     rmarkdown
 VignetteBuilder: knitr
-URL: https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers
+URL: https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports

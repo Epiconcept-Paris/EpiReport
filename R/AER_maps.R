@@ -16,7 +16,7 @@
 #'    An additional caption will be included at the location of the bookmark \code{'MAP_ASR_CAPTION'}.}
 #' }
 #' (see ECDC reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param disease character string, disease code (default \code{"DENGUE"}).
 #' @param year numeric, year to produce the map for (default \code{2019}).
@@ -33,7 +33,7 @@
 #' @return 'Word' doc an image preview
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link[=officer-package]{officer}} \cr
+#' Required Packages: \code{\link[officer]{body_replace_img_at_bkm}} \cr
 #' Internal functions: \code{\link{includeMap}} \code{\link{previewMap}} \cr
 #' Default datasets: \code{\link{AERparams}}
 #'

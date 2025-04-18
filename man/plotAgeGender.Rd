@@ -65,7 +65,7 @@ plotAgeGender(mydat,
 \seealso{
 Global function: \code{\link{getAgeGender}}  \cr
 Internal function: \code{\link{EcdcColors}} \cr
-Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+Required Packages: \code{\link[ggplot2]{ggplot}}
 }
 \keyword{age}
 \keyword{bargraph}

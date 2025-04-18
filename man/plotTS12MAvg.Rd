@@ -47,6 +47,6 @@ plotTS12MAvg(test,
 }
 \seealso{
 Global function: \code{\link{getTrend}}  \cr
-Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+Required Packages: \code{\link[ggplot2]{ggplot}}
 }
 \keyword{trend}

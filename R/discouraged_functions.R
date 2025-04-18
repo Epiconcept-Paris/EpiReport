@@ -29,7 +29,7 @@
 #'
 #' @seealso Global function: \code{\link{getAgeGender}}  \cr
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -132,7 +132,7 @@ plotAgeGender <- function(.data,
 #'
 #' @seealso Global function: \code{\link{getAgeGender}}  \cr
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #'
 #' @examples
 #'

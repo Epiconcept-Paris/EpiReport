@@ -31,5 +31,5 @@ Shaping the final table including titles, adding background color, specifying fo
 }
 \seealso{
 Global function: \code{\link{getTableByMS}} \cr
-Required package \code{\link[=flextable-package]{flextable}}
+Required package: \code{\link[flextable]{flextable}}
 }

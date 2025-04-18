@@ -76,6 +76,6 @@ getSeason()
 }
 \seealso{
 Global function: \code{\link{getSeason}}  \cr
-Required Packages: \code{\link[=ggplot2-package]{ggplot2}}
+Required Packages: \code{\link[ggplot2]{ggplot}}
 }
 \keyword{seasonality}

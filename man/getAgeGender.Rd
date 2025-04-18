@@ -56,7 +56,7 @@ The bar graph presents the distribution of cases at EU/EEA level using either:
 }
 The choice of the type of bar graph is set in the report parameters table \code{AERparams}. \cr
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 
@@ -70,7 +70,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link[=ggplot2-package]{ggplot2}} \code{\link[=officer-package]{officer}} \cr
+Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 Internal functions: \code{\link{plotBarGrouped}} (use of \code{plotAgeGender} discouraged)
 \code{\link{plotBar}} (use of \code{plotAge} discouraged)
 \code{\link{EcdcColors}} \cr
