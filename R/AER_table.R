@@ -5,15 +5,15 @@
 #' of the template report. An additional caption will be included at the location
 #' of the bookmark \code{'TABLE1_CAPTION'}. \cr
 #' (see Table 1 of the ECDC annual reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' The current version of the \code{'EpiReport'} package includes three types of table
 #' (see detailed specification of the tables in the
 #' package vignette with \code{browseVignettes(package = "EpiReport")}):
 #' \itemize{
-#'    \item{\code{COUNT} - }{Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
-#'    \item{\code{RATE} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
-#'    \item{\code{ASR} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
+#'    \item{\code{COUNT} - Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
+#'    \item{\code{RATE} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
+#'    \item{\code{ASR} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
 #'    including age-standardised rates for the most recent year.}
 #' }
 #'
@@ -40,7 +40,7 @@
 #' @return 'Word' doc or \code{flextable} object (see \code{'flextable'} package)
 #'
 #' @seealso Global function for the full epidemiological report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link{flextable}} \code{\link{officer}} \cr
+#' Required Packages: \code{\link[flextable]{flextable}} \code{\link[officer]{cursor_bookmark}} \cr
 #' Internal functions: \code{\link{shapeECDCFlexTable}} \code{\link{cleanECDCTable}} \cr
 #' Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 #'
@@ -58,9 +58,9 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
                          index = 1,
                          doc){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(x)) { x <- EpiReport::DENGUE2019 }
   if(missing(disease)) { disease <- "DENGUE" }
@@ -70,23 +70,23 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
   if(missing(index)) { index <- 1 }
 
 
-  ## ----
+  ## ---
   ## Preparing the data
-  ## ----
+  ## ---
 
   x$MeasureCode <- cleanMeasureCode(x$MeasureCode)
 
 
-  ## ----
+  ## ---
   ## Filtering parameter table
-  ## ----
+  ## ---
 
   reportParameters <- filterDisease(disease, reportParameters)
 
 
-  ## ----
+  ## ---
   ## Filtering data
-  ## ----
+  ## ---
 
   # --- Filtering on the required variables
   x <- dplyr::select(x, c("HealthTopicCode", "MeasureCode", "TimeUnit",
@@ -124,14 +124,14 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
 
 
 
-  ## ------------------
+  ## ---
   ## Building the Table
-  ## ------------------
+  ## ---
 
 
-  # ----
+  # ---
   # Opt 1: ASR table
-  # ----
+  # ---
 
   if(reportParameters$TableUse == "ASR") {
 
@@ -178,7 +178,7 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
   }
 
 
-  # ----
+  # ---
   # Opt 2: Rates table only
   # ---
 
@@ -215,9 +215,9 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
   }
 
 
-  # ----
+  # ---
   # Opt 3: Reported cases table only
-  # ----
+  # ---
 
   if(reportParameters$TableUse == "COUNT") {
     # --- Filtering
@@ -248,18 +248,18 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
   }
 
 
-  # ----
+  # ---
   # No Table
-  # ----
+  # ---
 
   if(reportParameters$TableUse == "NO") {
     return(doc)
   }
 
 
-  # ----
+  # ---
   # Specific Tables (to be continued)
-  # ----
+  # ---
 
   if(reportParameters$TableUse == "STAGE") {
 
@@ -309,17 +309,17 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
     )
   }
 
-  # ----
+  # ---
   # Table Layout
-  # ----
+  # ---
 
   ft <- flextable::flextable(x)
   ft <- shapeECDCFlexTable(ft = ft, headers = headers)
 
 
-  # ----
+  # ---
   # Final Output
-  # ----
+  # ---
 
   if(missing(doc)) {
     # --- If no 'Word' document, then return the flextable
@@ -334,11 +334,11 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
     }
 
 
-    # ----
+    # ---
     # Adding first the caption
-    # ----
+    # ---
 
-    ## ------ Caption definition
+    ## --- Caption definition
     pop <- ifelse(reportParameters$MeasurePopulation == "ALL", "", "-")
     pop <- ifelse(reportParameters$MeasurePopulation == "CONFIRMED", "confirmed ", pop)
     unit <- ifelse(reportParameters$TableUse != "COUNT" ,
@@ -351,9 +351,9 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
                                              value = caption)
 
 
-    # ----
+    # ---
     # Adding then the table
-    # ----
+    # ---
     doc <- officer::cursor_bookmark(doc, id = "TABLE1")
     doc <- flextable::body_add_flextable(doc, value = ft)
     # doc <- flextable::body_replace_flextable_at_bkm(doc,  #---Nice but we loose bookmark
@@ -384,7 +384,7 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
 #' @param ft flextable (see \code{'flextable'} package), table to shape into ECDC table layout
 #' @param headers dataframe including the multiple headers to add to the flextable object.
 #' Please note that the column \code{col_keys} should contain the names of the flextable object
-#' (i.e. \code{col_key = names(x)}), accordingly to \code{\link{set_header_df}}.
+#' (i.e. \code{col_key = names(x)}), accordingly to \code{\link[flextable]{set_header_df}}.
 #' @param fsize numeric, font to use (Default 7)
 #' @param fname character, font name (Default \code{"Tahoma"})
 #' @param maincolor character string, hexadecimal code for the header background
@@ -395,15 +395,15 @@ getTableByMS <- function(x = EpiReport::DENGUE2019 ,
 #' @return flextable object (see \code{flextable} package)
 #'
 #' @seealso Global function: \code{\link{getTableByMS}} \cr
-#' Required package \code{\link{flextable}}
+#' Required package: \code{\link[flextable]{flextable}}
 #'
 #' @export
 #'
 shapeECDCFlexTable <- function(ft, headers, fsize, fname, maincolor, lastbold){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(fsize)) {fsize <- 7}
   if(missing(fname)) {fname <- "Tahoma"}
@@ -412,9 +412,9 @@ shapeECDCFlexTable <- function(ft, headers, fsize, fname, maincolor, lastbold){
 
 
 
-  ## ----
+  ## ---
   ## Shaping the table
-  ## ----
+  ## ---
 
   # --- Borders
   ft <- flextable::border_remove(ft)
@@ -485,9 +485,9 @@ cleanECDCTable <- function(x,
                            Country = EpiReport::MSCode$Country,
                            GeoCode = EpiReport::MSCode$GeoCode){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(Country)) {
     Country <- EpiReport::MSCode$Country
@@ -499,9 +499,9 @@ cleanECDCTable <- function(x,
 
 
 
-  ## ----
+  ## ---
   ## Cleaning the table
-  ## ----
+  ## ---
 
   # --- Identifying missing reports
   x <- as.matrix(x)             # converting into matrix

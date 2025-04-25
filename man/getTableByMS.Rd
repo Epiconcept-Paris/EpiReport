@@ -49,16 +49,16 @@ in the epidemiological report at the bookmark location \code{'TABLE1'}
 of the template report. An additional caption will be included at the location
 of the bookmark \code{'TABLE1_CAPTION'}. \cr
 (see Table 1 of the ECDC annual reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \details{
 The current version of the \code{'EpiReport'} package includes three types of table
 (see detailed specification of the tables in the
 package vignette with \code{browseVignettes(package = "EpiReport")}):
 \itemize{
-   \item{\code{COUNT} - }{Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
-   \item{\code{RATE} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
-   \item{\code{ASR} - }{Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
+   \item{\code{COUNT} - Table presenting the number of cases by Member State (GeoCode) over a 5-year period};
+   \item{\code{RATE} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period};
+   \item{\code{ASR} - Table presenting the number of cases and rates by Member State (GeoCode) over a 5-year period,
    including age-standardised rates for the most recent year.}
 }
 }
@@ -69,7 +69,7 @@ getTableByMS()
 }
 \seealso{
 Global function for the full epidemiological report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{flextable}} \code{\link{officer}} \cr
+Required Packages: \code{\link[flextable]{flextable}} \code{\link[officer]{cursor_bookmark}} \cr
 Internal functions: \code{\link{shapeECDCFlexTable}} \code{\link{cleanECDCTable}} \cr
 Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 }

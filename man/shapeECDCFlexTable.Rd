@@ -11,7 +11,7 @@ shapeECDCFlexTable(ft, headers, fsize, fname, maincolor, lastbold)
 
 \item{headers}{dataframe including the multiple headers to add to the flextable object.
 Please note that the column \code{col_keys} should contain the names of the flextable object
-(i.e. \code{col_key = names(x)}), accordingly to \code{\link{set_header_df}}.}
+(i.e. \code{col_key = names(x)}), accordingly to \code{\link[flextable]{set_header_df}}.}
 
 \item{fsize}{numeric, font to use (Default 7)}
 
@@ -31,5 +31,5 @@ Shaping the final table including titles, adding background color, specifying fo
 }
 \seealso{
 Global function: \code{\link{getTableByMS}} \cr
-Required package \code{\link{flextable}}
+Required package: \code{\link[flextable]{flextable}}
 }

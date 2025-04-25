@@ -52,11 +52,11 @@ that will be included in the epidemiological report at the bookmark location
 The graph includes the number of cases at EU/EEA level, by month,
 over the past five years, with:
 \itemize{
-   \item{}{The number of cases by month over the 5-year period (grey solid line)}
-   \item{}{The 12-month moving average of the number of cases by month (green solid line)}
+   \item{The number of cases by month over the 5-year period (grey solid line)}
+   \item{The 12-month moving average of the number of cases by month (green solid line)}
 }
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 
@@ -70,7 +70,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 Internal functions: \code{\link{plotTS12MAvg}} \cr
 Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 }

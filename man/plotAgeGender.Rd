@@ -42,9 +42,9 @@ This function draws a bar graph of the distribution of cases by age group
 and gender (or possibly other grouping). \cr
 The bar graph presents the distribution of cases at EU/EEA level using either:
 \itemize{
-   \item{\code{AG-COUNT}: }{The number of cases by age and gender}
-   \item{\code{AG-RATE}: }{The rate per 100 000 cases by age and gender}
-   \item{\code{AG-PROP}: }{The proportion of cases by age and gender}
+   \item{\code{AG-COUNT}: The number of cases by age and gender}
+   \item{\code{AG-RATE}: The rate per 100 000 cases by age and gender}
+   \item{\code{AG-PROP}: The proportion of cases by age and gender}
 }
 Expects aggregated data.
 }
@@ -65,7 +65,7 @@ plotAgeGender(mydat,
 \seealso{
 Global function: \code{\link{getAgeGender}}  \cr
 Internal function: \code{\link{EcdcColors}} \cr
-Required Packages: \code{\link{ggplot2}}
+Required Packages: \code{\link[ggplot2]{ggplot}}
 }
 \keyword{age}
 \keyword{bargraph}

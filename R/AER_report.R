@@ -8,7 +8,7 @@
 #' (see the package vignette "The Epidemiological Report Package" with
 #' \code{browseVignettes("EpiReport")})  \cr
 #' (see ECDC annual epidemilogical reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param output_path character string, the full path where to create the 'Word' output.
 #' Defaut location will be the current working directory (default \code{getwd()})
@@ -32,24 +32,24 @@
 #'
 getTemplate <- function(output_path){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(output_path)){
     output_path <- getwd()
   }
 
-  ## ----
+  ## ---
   ## Initialising the 'Word' object
-  ## ----
+  ## ---
 
   doc <- officer::read_docx(path = file.path(system.file(package = "EpiReport"),
                                              "template/AER_template.docx" ))
 
-  ## ----
+  ## ---
   ## Generating the 'Word' output
-  ## ----
+  ## ---
 
   print(doc, target = paste(output_path, "/Empty_AER_template.docx", sep=""))
 
@@ -66,7 +66,7 @@ getTemplate <- function(output_path){
 #' including all disease-specific outputs at each output-specific bookmarks exact location. \cr
 #' (for further information on the outputs and the corresponding bookmarks,
 #' please see the package vignette "The Epidemiological Report Package" with \code{browseVignettes("EpiReport")})\cr
-#' (see ECDC AER \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' (see ECDC AER \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param template doc (see \code{'officer'} package), the empty 'Word' document template in which
 #' to include the table and plots disease-specific outputs.
@@ -127,9 +127,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
                    pathPNG = system.file("maps", package = "EpiReport")){
 
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
   if(missing(template)){
     template <- file.path(system.file(package = "EpiReport"),
                           "template/AER_template.docx" )
@@ -146,30 +146,30 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Filtering
-  ## ----
+  ## ---
   reportParameters <- filterDisease(disease, reportParameters)
 
 
 
-  ## ----
+  ## ---
   ## Initialising the 'Word' object
-  ## ----
+  ## ---
   doc <- officer::read_docx(path = template)
 
 
 
-  ## ----
+  ## ---
   ## Preparing the data
-  ## ----
+  ## ---
   x$MeasureCode <- cleanMeasureCode(x$MeasureCode)
 
 
 
-  ## ----
+  ## ---
   ## Disease and year title
-  ## ----
+  ## ---
   if ("DISEASE" %in% officer::docx_bookmarks(doc)) {
     doc <- officer::body_replace_text_at_bkm(doc,
                                              bookmark = "DISEASE",
@@ -182,9 +182,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Extraction date on which the Atlas is based on
-  ## ----
+  ## ---
   dateAtlas <- paste("This report is based on data for ", year,
                      " retrieved from The European Surveillance System (TESSy) on",
                      reportParameters$DatePublicAtlas,
@@ -197,17 +197,17 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Initialising figures and tables numbering
-  ## ----
+  ## ---
   indexTab <- 1
   indexFig <- 1
 
 
 
-  ## ----
+  ## ---
   ## Adding the table
-  ## ----
+  ## ---
   if (reportParameters$TableUse != "NO" &
       "TABLE1" %in% officer::docx_bookmarks(doc)){
     doc <- EpiReport::getTableByMS(x = x,
@@ -222,9 +222,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Map
-  ## ----
+  ## ---
   if ((reportParameters$MapNumbersUse == "Y" & "MAP_NB" %in% officer::docx_bookmarks(doc)) |
       (reportParameters$MapRatesUse == "Y" & "MAP_RATE" %in% officer::docx_bookmarks(doc)) |
       (reportParameters$MapASRUse == "Y" & "MAP_ASR" %in% officer::docx_bookmarks(doc)) ){
@@ -243,9 +243,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Trend plot
-  ## ----
+  ## ---
   if (reportParameters$TSTrendGraphUse != "N" &
       "TS_TREND" %in% officer::docx_bookmarks(doc)){
     doc <- EpiReport::getTrend(x = x,
@@ -260,9 +260,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Seasonal plot
-  ## ----
+  ## ---
   if (reportParameters$TSSeasonalityGraphUse != "N" &
       "TS_SEASON" %in% officer::docx_bookmarks(doc)){
     doc <- EpiReport::getSeason(x = x,
@@ -277,9 +277,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Bar graph
-  ## ----
+  ## ---
 
   if (reportParameters$AgeGenderUse != "NO" &
       "BARGPH_AGEGENDER" %in% officer::docx_bookmarks(doc)){
@@ -293,9 +293,9 @@ getAER <- function(template =  file.path(system.file(package = "EpiReport"), "te
 
 
 
-  ## ----
+  ## ---
   ## Generating the 'Word' output
-  ## ----
+  ## ---
 
   print(doc,
         target = paste(outputPath, "/", disease, "_AER_",

@@ -22,7 +22,7 @@ epidemiological report using \code{getAER(template = 'NewTemplate.docx', ...)} \
 (see the package vignette "The Epidemiological Report Package" with
 \code{browseVignettes("EpiReport")})  \cr
 (see ECDC annual epidemilogical reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 

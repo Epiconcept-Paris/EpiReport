@@ -6,17 +6,17 @@
 #' of the template report, depending of the type of map.
 #' Three type of maps can be included in the report:
 #' \itemize{
-#'    \item{Bookmark \code{'MAP_NB'}: }{Distribution of cases by country.
+#'    \item{Bookmark \code{'MAP_NB'}: Distribution of cases by country.
 #'    An additional caption will be included at the location of the bookmark \code{'MAP_NB_CAPTION'}.}
-#'    \item{Bookmark \code{'MAP_RATE'}: }{Distribution of cases
+#'    \item{Bookmark \code{'MAP_RATE'}: Distribution of cases
 #'    per 100 000 population by country. An additional caption will be included
 #'    at the location of the bookmark \code{'MAP_RATE_CAPTION'}.}
-#'    \item{Bookmark \code{'MAP_ASR'}: }{Distribution of cases using
+#'    \item{Bookmark \code{'MAP_ASR'}: Distribution of cases using
 #'    age-strandardised rates per 100 000 population by country.
 #'    An additional caption will be included at the location of the bookmark \code{'MAP_ASR_CAPTION'}.}
 #' }
 #' (see ECDC reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param disease character string, disease code (default \code{"DENGUE"}).
 #' @param year numeric, year to produce the map for (default \code{2019}).
@@ -33,7 +33,7 @@
 #' @return 'Word' doc an image preview
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link{officer}} \cr
+#' Required Packages: \code{\link[officer]{body_replace_img_at_bkm}} \cr
 #' Internal functions: \code{\link{includeMap}} \code{\link{previewMap}} \cr
 #' Default datasets: \code{\link{AERparams}}
 #'
@@ -54,9 +54,9 @@ getMap <- function(disease = "DENGUE",
                    pathPNG = system.file("maps", package = "EpiReport"),
                    doc){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(disease)) { disease <- "DENGUE" }
   if(missing(year)) { year <- 2019 }
@@ -66,25 +66,25 @@ getMap <- function(disease = "DENGUE",
   if(missing(doc)) { preview <- "" }
 
 
-  ## ----
+  ## ---
   ## Filtering
-  ## ----
+  ## ---
 
   reportParameters <- filterDisease(disease, reportParameters)
 
 
-  ## ----
+  ## ---
   ## Caption definition
-  ## ----
+  ## ---
 
   pop <- ifelse(reportParameters$MeasurePopulation == "ALL", "", "-")
   pop <- ifelse(reportParameters$MeasurePopulation == "CONFIRMED", "confirmed ", pop)
 
 
 
-  ## ----
+  ## ---
   ## Opt1: Number of cases map
-  ## ----
+  ## ---
 
   if(reportParameters$MapNumbersUse == "Y") {
     if(missing(doc)) {
@@ -103,9 +103,9 @@ getMap <- function(disease = "DENGUE",
 
 
 
-  ## ----
+  ## ---
   ## Opt2: Rates map
-  ## ----
+  ## ---
 
   if(reportParameters$MapRatesUse == "Y") {
     if(missing(doc)) {
@@ -124,9 +124,9 @@ getMap <- function(disease = "DENGUE",
 
 
 
-  ## ----
+  ## ---
   ## Opt3: Age Specific Rate map
-  ## ----
+  ## ---
 
   if(reportParameters$MapASRUse == "Y") {
     if(missing(doc)) {
@@ -145,9 +145,9 @@ getMap <- function(disease = "DENGUE",
 
 
 
-  ## ----
+  ## ---
   ## No Maps for this disease
-  ## ----
+  ## ---
 
   if(reportParameters$MapNumbersUse != "Y" &
      reportParameters$MapRatesUse != "Y" &
@@ -157,9 +157,9 @@ getMap <- function(disease = "DENGUE",
   }
 
 
-  ## ----
+  ## ---
   ## Final output
-  ## ----
+  ## ---
 
   if(missing(doc)) {
     return(preview[-1])
@@ -211,7 +211,7 @@ includeMap <- function(disease, year, reportParameters,
                        pop, namePNGsuffix, unit,
                        mapBookmark, captionBookmark){
 
-  ## ----- Map file name
+  ## --- Map file name
   namePNG <- paste(pathPNG, "/", disease, "_", year, ".",
                    reportParameters$MeasurePopulation, ".",
                    namePNGsuffix, ".png", sep = "")
@@ -231,7 +231,7 @@ includeMap <- function(disease, year, reportParameters,
             call. = FALSE)
   }
 
-  ## ------ Caption definition
+  ## --- Caption definition
   caption <- paste("Figure ", index, ". Distribution of ", pop, reportParameters$Label,
                    " cases ", unit, "by country, ",
                    "EU/EEA, ", year, sep = "")
@@ -269,7 +269,7 @@ includeMap <- function(disease, year, reportParameters,
 previewMap <- function(disease, year, reportParameters,
                        pathPNG, namePNGsuffix){
 
-  ## ----- Map file name
+  ## --- Map file name
   namePNG <- paste(pathPNG, "/", disease, "_", year, ".",
                    reportParameters$MeasurePopulation, ".",
                    namePNGsuffix, ".png", sep = "")

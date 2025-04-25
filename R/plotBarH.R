@@ -20,7 +20,7 @@
 #'
 #' @seealso
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -54,18 +54,18 @@ plotBarH <- function(.data,
                      xlabel_black = "") {
 
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(fill_color)) { fill_color <- EcdcColors(col_scale = "qual", n = 1) }
   if(missing(log10_scale)) { log10_scale <- FALSE }
 
 
 
-  ## ----
+  ## ---
   ## Breaks for the Y axis
-  ## ----
+  ## ---
 
   if (log10_scale == TRUE) {
     MAX <- max(.data[[yvar]], na.rm = TRUE)
@@ -94,9 +94,9 @@ plotBarH <- function(.data,
 
 
 
-  ## ----
+  ## ---
   ## Plotting
-  ## ----
+  ## ---
 
   # --- Removing NA
   .data <- tidyr::drop_na(.data, tidyselect::all_of(yvar))

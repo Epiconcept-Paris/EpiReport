@@ -49,14 +49,14 @@ in the epidemiological report at the bookmark location \code{'BARGPH_AGEGENDER'}
 of the template report. \cr
 The bar graph presents the distribution of cases at EU/EEA level using either:
 \itemize{
-   \item{\code{AG-COUNT}: }{The number of cases by age and gender}
-   \item{\code{AG-RATE}: }{The rate per 100 000 cases by age and gender}
-   \item{\code{AG-PROP}: }{The proportion of cases by age and gender}
-   \item{\code{A-RATE}: }{The rate per 100 000 cases by age only}
+   \item{\code{AG-COUNT}: The number of cases by age and gender}
+   \item{\code{AG-RATE}: The rate per 100 000 cases by age and gender}
+   \item{\code{AG-PROP}: The proportion of cases by age and gender}
+   \item{\code{A-RATE}: The rate per 100 000 cases by age only}
 }
 The choice of the type of bar graph is set in the report parameters table \code{AERparams}. \cr
 (see ECDC reports
-\url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+\url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 }
 \examples{
 
@@ -70,7 +70,7 @@ browseVignettes(package = "EpiReport")
 }
 \seealso{
 Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 Internal functions: \code{\link{plotBarGrouped}} (use of \code{plotAgeGender} discouraged)
 \code{\link{plotBar}} (use of \code{plotAge} discouraged)
 \code{\link{EcdcColors}} \cr

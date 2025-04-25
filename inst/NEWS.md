@@ -1,3 +1,14 @@
+EpiReport 1.0.3 (2025-04-18)
+==================
+
+### BUG FIXES
+
+* CRAN adjustments required
+  + Correction of itemize brackets in roxygen documentation
+  + Correction of link to external packages in roxygen documentation 
+  + Cleaning 4 dashes into 3 dashes when no subsection for inline documentation
+  
+
 EpiReport 1.0.2 (2021-02-04)
 ==================
 

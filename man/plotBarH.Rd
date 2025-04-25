@@ -63,6 +63,6 @@ plotBarH(mfratio,
 }
 \seealso{
 Internal function: \code{\link{EcdcColors}} \cr
-Required Packages: \code{\link{ggplot2}}
+Required Packages: \code{\link[ggplot2]{ggplot}}
 }
 \keyword{bargraph}

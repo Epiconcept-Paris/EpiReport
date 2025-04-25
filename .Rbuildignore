@@ -2,3 +2,6 @@
 ^\.Rproj\.user$
 test
 LICENSE.md
+^doc$
+^Meta$
+^\.github$

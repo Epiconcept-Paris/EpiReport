@@ -24,7 +24,7 @@
 #'
 #' @seealso
 #' Internal function: \code{\link{EcdcColors}} \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #'
 #' @examples
 #' # --- Create dummy data
@@ -53,9 +53,9 @@ plotTS <- function(.data,
                      xvar_format = "%Y",
                      xvar_breaks = "1 year") {
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(fill_color)) { fill_color <- EcdcColors(col_scale = "qual", n = 1) }
   if(missing(log10_scale)) { log10_scale <- FALSE }
@@ -64,9 +64,9 @@ plotTS <- function(.data,
 
 
 
-  ## ----
+  ## ---
   ## Setting breaks for Y axis
-  ## ----
+  ## ---
 
   if (log10_scale == TRUE) {
     MAX <- max(.data[[yvar]], na.rm = TRUE)
@@ -90,9 +90,9 @@ plotTS <- function(.data,
 
 
 
-  ## ----
+  ## ---
   ## Plotting
-  ## ----
+  ## ---
 
   p <- ggplot2::ggplot(.data,
                        ggplot2::aes(x = .data[[xvar]],

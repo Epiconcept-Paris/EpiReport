@@ -7,13 +7,13 @@
 #' The graph includes the distribution of cases at EU/EEA level, by month,
 #' over the past five years, with:
 #' \itemize{
-#'    \item{}{The number of cases by month in the reference year (green solid line)}
-#'    \item{}{The mean number of cases by month in the four previous years (grey dashed line)}
-#'    \item{}{The minimum number of cases by month in the four previous years (grey area)}
-#'    \item{}{The maximum number of cases by month in the four previous years (grey area)}
+#'    \item{The number of cases by month in the reference year (green solid line)}
+#'    \item{The mean number of cases by month in the four previous years (grey dashed line)}
+#'    \item{The minimum number of cases by month in the four previous years (grey area)}
+#'    \item{The maximum number of cases by month in the four previous years (grey area)}
 #' }
 #' (see ECDC reports
-#' \url{https://www.ecdc.europa.eu/en/all-topics-z/surveillance-and-disease-data/annual-epidemiological-reports-aers})
+#' \url{https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports})
 #'
 #' @param x dataframe, raw disease-specific dataset (see specification of the
 #' dataset in the package vignette with \code{browseVignettes(package = "EpiReport")})
@@ -38,7 +38,7 @@
 #' @return 'Word' doc or a ggplot2 object
 #'
 #' @seealso Global function for the full epidemilogical report: \code{\link{getAER}}  \cr
-#' Required Packages: \code{\link{ggplot2}} \code{\link{officer}} \cr
+#' Required Packages: \code{\link[ggplot2]{ggplot}} \code{\link[officer]{body_replace_text_at_bkm}} \cr
 #' Internal functions: \code{\link{plotSeasonality}} \cr
 #' Default datasets: \code{\link{AERparams}} \code{\link{MSCode}}
 #'
@@ -61,9 +61,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
                       index = 1,
                       doc){
 
-  ## ----
+  ## ---
   ## Setting default arguments if missing
-  ## ----
+  ## ---
 
   if(missing(x)) { x <- EpiReport::DENGUE2019 }
   if(missing(disease)) { disease <- "DENGUE" }
@@ -73,29 +73,29 @@ getSeason <- function(x = EpiReport::DENGUE2019,
   if(missing(index)) { index <- 1 }
 
 
-  ## ----
+  ## ---
   ## Preparing the data
-  ## ----
+  ## ---
 
   x$MeasureCode <- cleanMeasureCode(x$MeasureCode)
 
 
-  ## ----
+  ## ---
   ## Filtering parameter table
-  ## ----
+  ## ---
 
   reportParameters <- filterDisease(disease, reportParameters)
 
 
-  ## ----
+  ## ---
   ## Seasonal plot
-  ## ----
+  ## ---
 
   if(reportParameters$TSSeasonalityGraphUse == "Y") {
 
-    ## ----
+    ## ---
     ## Filtering data
-    ## ----
+    ## ---
 
     # --- Filtering on the required variables
     x <- dplyr::select(x, c("HealthTopicCode", "MeasureCode", "TimeUnit",
@@ -152,9 +152,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ----
+    ## ---
     ## Building the time series for all countries with no gap
-    ## ----
+    ## ---
 
     tsFill <- expand.grid(TimeCode = studyPeriod, GeoCode = MS, stringsAsFactors = FALSE)
 
@@ -164,9 +164,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ----
+    ## ---
     ## Building the result table
-    ## ----
+    ## ---
 
     # --- Transforming into a complete date
     x$TimeCode <- as.Date(paste(x$TimeCode,"01", sep = "-"), "%Y-%m-%d")
@@ -197,9 +197,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 
 
 
-    ## ----
+    ## ---
     ## Plot
-    ## ----
+    ## ---
 
     p <- plotSeasonality(agg,
                          xvar = "TimeCode",
@@ -214,7 +214,7 @@ getSeason <- function(x = EpiReport::DENGUE2019,
       return(p)
     } else {
 
-      ## ------ Caption
+      ## --- Caption
       pop <- ifelse(reportParameters$MeasurePopulation == "ALL", "", "-")
       pop <- ifelse(reportParameters$MeasurePopulation == "CONFIRMED", "confirmed ", pop)
       caption <- paste("Figure ", index, ". Distribution of ", pop,
@@ -224,14 +224,14 @@ getSeason <- function(x = EpiReport::DENGUE2019,
                                                bookmark = "TS_SEASON_CAPTION",
                                                value = caption)
 
-      ## ------ Plot
+      ## --- Plot
       doc <- EpiReport::body_replace_gg_at_bkm(doc = doc,
                                                gg = p,
                                                bookmark = "TS_SEASON",
                                                width = 6,
                                                height = 3)
 
-      ## ------ List of countries reporting consistently
+      ## --- List of countries reporting consistently
       countries <- EpiReport::MSCode$TheCountry[EpiReport::MSCode$GeoCode %in% x$GeoCode]
       countries <- paste(countries, collapse = ", ")
       countries <- paste("Source: Country reports from ", countries, ".", sep = "")
@@ -242,9 +242,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
   }
 
 
-  ## ----
+  ## ---
   ## No Seasonal plot for this disease
-  ## ----
+  ## ---
 
   if(reportParameters$TSSeasonalityGraphUse == "N") {
     message(paste('According to the parameter table \'AERparams\', this disease "',
@@ -258,9 +258,9 @@ getSeason <- function(x = EpiReport::DENGUE2019,
   }
 
 
-  ## ----
+  ## ---
   ## Final output
-  ## ----
+  ## ---
 
   if(missing(doc)) {
     return(p)
@@ -276,10 +276,10 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 #' over the past 5 years. \cr
 #' The graph includes the distribution of cases, by month, over the past five years, with:
 #' \itemize{
-#'    \item{\code{yvar}: }{The number of cases by month in the reference year (green solid line)}
-#'    \item{\code{mean4years}: }{The mean number of cases by month in the four previous years (grey dashed line)}
-#'    \item{\code{min4years}: }{The minimum number of cases by month in the four previous years (grey area)}
-#'    \item{\code{max4years}: }{The maximum number of cases by month in the four previous years (grey area)}
+#'    \item{\code{yvar}: The number of cases by month in the reference year (green solid line)}
+#'    \item{\code{mean4years}: The mean number of cases by month in the four previous years (grey dashed line)}
+#'    \item{\code{min4years}: The minimum number of cases by month in the four previous years (grey area)}
+#'    \item{\code{max4years}: The maximum number of cases by month in the four previous years (grey area)}
 #' }
 #' Expects aggregated data and pre-calculated min, max and mean figures.
 #'
@@ -299,7 +299,7 @@ getSeason <- function(x = EpiReport::DENGUE2019,
 #' @keywords seasonality
 #'
 #' @seealso Global function: \code{\link{getSeason}}  \cr
-#' Required Packages: \code{\link{ggplot2}}
+#' Required Packages: \code{\link[ggplot2]{ggplot}}
 #' @examples
 #'
 #'
