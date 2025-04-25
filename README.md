@@ -1,4 +1,4 @@
-# '_EpiReport_' package
+# '_EpiReport v1.0.3_' package
 European Centre for Disease Prevention and Control (ECDC)
 
 # Description
