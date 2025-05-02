@@ -1,7 +1,7 @@
 Package: EpiReport
 Type: Package
 Title: Epidemiological Report
-Version: 1.0.3
+Version: 1.0.4
 Date: 2025-04-18
 Authors@R: c( 
   person( given = "Lore", family = "Merdrignac", 
@@ -43,4 +43,4 @@ Suggests:
     knitr (>= 1.20), 
     rmarkdown
 VignetteBuilder: knitr
-URL: https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports
+URL: https://www.ecdc.europa.eu/en/publications-data/monitoring/all-annual-epidemiological-reports https://epiconcept-paris.github.io/EpiReport/
