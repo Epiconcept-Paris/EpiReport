@@ -1,3 +1,12 @@
+EpiReport 1.0.4 (2025-05-02)
+==================
+
+### NEW FEATURE
+
+* Adding pkgdown page
+
+
+
 EpiReport 1.0.3 (2025-04-18)
 ==================
 
