@@ -5,3 +5,7 @@ LICENSE.md
 ^doc$
 ^Meta$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
